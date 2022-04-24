@@ -8,8 +8,9 @@
   color: #545454;
 }
 @media screen and (max-width: 425px) {
-  .footer__copyrights {
+  .footer {
     font-size: 14px;
     line-height: 16.94px;
+    padding-bottom: 36px;
   }
 }
