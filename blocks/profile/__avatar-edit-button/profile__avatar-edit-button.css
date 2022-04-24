@@ -1,0 +1,15 @@
+.profile__avatar-edit-button {
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/edit-button.svg);
+  border: solid 1px #ffffff;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media screen and (max-width: 768px) {
+  .profile__avatar-edit-button {
+    min-width: 18px;
+    height: 18px;
+  }
+}
