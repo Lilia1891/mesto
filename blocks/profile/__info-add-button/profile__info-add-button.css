@@ -10,6 +10,7 @@
   box-sizing: border-box;
   border-radius: 2px;
   align-self: center;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 425px) {
