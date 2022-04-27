@@ -16,3 +16,5 @@
 - HTML;
 - CSS;
 - JavaScript.
+
+[ссылка на проект](https://lilia1891.github.io/mesto/index.html)
