@@ -13,7 +13,9 @@ function formSubmitHandler(evt) {
   const jobValue = jobInput.value;
   nameProfile.textContent = nameValue;
   jobProfile.textContent = jobValue;
+  closePopupHandler(evt);
 }
+
 function openPopupHandler(evt) {
   popup.classList.add("popup_opened");
   const nameValue = nameProfile.textContent;
