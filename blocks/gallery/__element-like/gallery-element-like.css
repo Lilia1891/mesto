@@ -5,4 +5,5 @@
   background-image: url(../../../images/like-button.svg);
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }

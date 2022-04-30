@@ -5,4 +5,12 @@
   height: 74px;
   border-bottom: 1px solid #545454;
   display: block;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .header {
+    max-width: 100%;
+    height: 56px;
+    margin-top: 28px;
+  }
 }

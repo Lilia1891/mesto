@@ -6,10 +6,16 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
+
+.profile__avatar-edit-button:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 768px) {
   .profile__avatar-edit-button {
-    min-width: 18px;
+    width: 18px;
     height: 18px;
   }
 }
