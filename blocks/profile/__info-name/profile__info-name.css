@@ -1,5 +1,5 @@
 .profile__info-name {
-  max-width: 87%;
+  max-width: 294px;
   margin: 0 auto;
   margin-right: 18px;
   font-weight: 500;
@@ -8,19 +8,18 @@
   color: #fff;
   display: inline-block;
   text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: 768px) {
   .profile__info-name {
     margin: 0 auto;
-    min-width: 59%;
+    max-width: 189px;
     margin-right: 10px;
     font-style: normal;
     font-weight: 500;
     font-size: 27px;
     line-height: 33px;
-    white-space: nowrap;
   }
 }

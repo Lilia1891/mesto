@@ -1,8 +1,5 @@
 .popup__button-text {
   margin: 14px 124px 18px 125px;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
   text-align: center;
   color: #ffffff;
 }
@@ -10,7 +7,5 @@
 @media screen and (max-width: 600px) {
   .popup__button-text {
     margin: 14px 82px;
-    font-size: 14px;
-    line-height: 17px;
   }
 }

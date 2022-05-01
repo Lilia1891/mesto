@@ -7,3 +7,7 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.gallery__element-like:hover {
+  opacity: 0.5;
+}
