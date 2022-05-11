@@ -35,7 +35,7 @@
     </section>
     <section class="gallery">
       <ul class="gallery__elements">
-        <li class="gallery__element">
+        <!--<li class="gallery__element">
           <img
             src="./images/Karachaevsk.jpg"
             alt="Фото старинной башни"
@@ -45,6 +45,7 @@
             <h3 class="gallery__element-title">Карачаевск</h3>
             <button type="button" class="gallery__element-like"></button>
           </div>
+          <button type="button" class="gallery__element-delete"></button>
         </li>
         <li class="gallery__element">
           <img
@@ -56,6 +57,7 @@
             <h3 class="gallery__element-title">Гора Эльбрус</h3>
             <button type="button" class="gallery__element-like"></button>
           </div>
+          <button type="button" class="gallery__element-delete"></button>
         </li>
         <li class="gallery__element">
           <img
@@ -67,6 +69,7 @@
             <h3 class="gallery__element-title">Домбай</h3>
             <button type="button" class="gallery__element-like"></button>
           </div>
+          <button type="button" class="gallery__element-delete"></button>
         </li>
         <li class="gallery__element">
           <img
@@ -78,6 +81,7 @@
             <h3 class="gallery__element-title">Гора Эльбрус</h3>
             <button type="button" class="gallery__element-like"></button>
           </div>
+          <button type="button" class="gallery__element-delete"></button>
         </li>
         <li class="gallery__element">
           <img
@@ -89,6 +93,7 @@
             <h3 class="gallery__element-title">Домбай</h3>
             <button type="button" class="gallery__element-like"></button>
           </div>
+          <button type="button" class="gallery__element-delete"></button>
         </li>
         <li class="gallery__element">
           <img
@@ -100,7 +105,9 @@
             <h3 class="gallery__element-title">Карачаевск</h3>
             <button type="button" class="gallery__element-like"></button>
           </div>
+          <button type="button" class="gallery__element-delete"></button>
         </li>
+        -->
       </ul>
     </section>
     <footer class="footer">
@@ -131,6 +138,17 @@
         </form>
       </div>
     </div>
+    <template class="template-elements">
+      <li class="gallery__element">
+        <img src="#" class="gallery__element-image" alt="#" />
+        <div class="gallery__element-description">
+          <h2 class="gallery__element-title"></h2>
+          <button type="button" class="gallery__element-like"></button>
+        </div>
+        <button type="button" class="gallery__element-delete"></button>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/elements.js"></script>
   </body>
 </html>

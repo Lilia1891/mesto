@@ -16,8 +16,9 @@
 @import url(../blocks/gallery/__element/gallery__element.css);
 @import url(../blocks/gallery/__element-image/gallery__element-image.css);
 @import url(../blocks/gallery/__element-title/gallery__element-title.css);
-@import url(../blocks/gallery/__element-like/gallery-element-like.css);
+@import url(../blocks/gallery/__element-like/gallery__element-like.css);
 @import url(../blocks/gallery/__element-description/gallery__element-description.css);
+@import url(../blocks/gallery/__element-delete/gallery__element-delete.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyrights/footer__copyrights.css);
 @import url(../blocks/popup/popup.css);
