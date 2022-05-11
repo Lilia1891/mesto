@@ -30,14 +30,18 @@ const elements = document.querySelector(".gallery__elements");
 const handleDeleteClick = (evt) => {
   evt.target.closest(".gallery__element").remove();
 };
+const handleLikeClick = (evt) => {
+  evt.target.classList.toggle("gallery__element-like_active");
+};
 
 initialElements.forEach(({ name, link }) => {
   const element = elementTemplate.cloneNode(true);
   const elementImage = element.querySelector(".gallery__element-image");
   const elementPlaceName = element.querySelector(".gallery__element-title");
   const elementDeleteButton = element.querySelector(".gallery__element-delete");
-  const LikeButton = element.querySelector(".gallery__element-like");
+  const elementLikeButton = element.querySelector(".gallery__element-like");
   elementDeleteButton.addEventListener("click", handleDeleteClick);
+  elementLikeButton.addEventListener("click", handleLikeClick);
   elementImage.src = link;
   elementImage.alt = name;
   elementPlaceName.textContent = name;
