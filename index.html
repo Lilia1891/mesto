@@ -138,12 +138,50 @@
         </form>
       </div>
     </div>
+
+    <div class="popup" id="new-card">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button"></button>
+        <form class="popup__add-form" name="popup__add-form">
+          <h3 class="popup__title">Новое место</h3>
+          <input
+            class="popup__input popup__input_type_name"
+            type="text"
+            placeholder="Название"
+            name="name"
+            required
+          />
+
+          <input
+            class="popup__input popup__input_type_link"
+            type="url"
+            placeholder="Ссылка на картинку"
+            name="link"
+            required
+          />
+
+          <button class="popup__submit-button" type="submit">
+            <span class="popup__button-text">Создать</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup__view-image">
+      <figure class="popup__figure">
+        <img class="popup__image" src="." alt="." />
+        <figurecaption class="popup__image-title"></figurecaption>
+        <button class="popup__close-button" type="button"></button>
+      </figure>
+    </div>
     <template class="template-elements">
       <li class="gallery__element">
         <img src="#" class="gallery__element-image" alt="#" />
         <div class="gallery__element-description">
           <h2 class="gallery__element-title"></h2>
-          <button type="button" class="gallery__element-like"></button>
+          <button
+            type="button"
+            class="gallery__element-like gallery__element-like"
+          ></button>
         </div>
         <button type="button" class="gallery__element-delete"></button>
       </li>
