@@ -54,6 +54,11 @@ const openPopupViewHandler = (evt) => {
   popupViewTitle.textContent = evt.target.alt;
 };
 
+const closePopupViewHandler = (evt) => {
+  popupView.classList.remove("popup_opened");
+};
+closePopupView.addEventListener("click", closePopupViewHandler);
+
 initialElements.forEach(({ name, link }) => {
   const element = elementTemplate.cloneNode(true);
   const elementImage = element.querySelector(".gallery__element-image");
