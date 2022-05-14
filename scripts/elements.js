@@ -47,6 +47,12 @@ const handleDeleteClick = (evt) => {
 const handleLikeClick = (evt) => {
   evt.target.classList.toggle("gallery__element-like_active");
 };
+const openPopupViewHandler = (evt) => {
+  popupView.classList.add("popup_opened");
+  popupViewImage.src = evt.target.src;
+  popupViewImage.alt = evt.target.alt;
+  popupViewTitle.textContent = evt.target.alt;
+};
 
 initialElements.forEach(({ name, link }) => {
   const element = elementTemplate.cloneNode(true);
@@ -56,6 +62,7 @@ initialElements.forEach(({ name, link }) => {
   const elementLikeButton = element.querySelector(".gallery__element-like");
   elementDeleteButton.addEventListener("click", handleDeleteClick);
   elementLikeButton.addEventListener("click", handleLikeClick);
+  elementImage.addEventListener("click", openPopupViewHandler);
   elementImage.src = link;
   elementImage.alt = name;
   elementPlaceName.textContent = name;
@@ -87,6 +94,7 @@ function submitPopupAddHandler(evt) {
   const elementLikeButton = element.querySelector(".gallery__element-like");
   elementDeleteButton.addEventListener("click", handleDeleteClick);
   elementLikeButton.addEventListener("click", handleLikeClick);
+  elementImage.addEventListener("click", openPopupViewHandler);
   elementImage.src = link;
   elementImage.alt = name;
   elementPlaceName.textContent = name;
