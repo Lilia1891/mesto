@@ -7,7 +7,7 @@ const submitPopupAdd = popupAdd.querySelector(".popup__submit-button");
 
 const openPopupAdd = document.querySelector(".profile__info-add-button");
 
-const popupView = document.querySelector(".popup__view-image");
+const popupView = document.querySelector("#view-image");
 const popupViewImage = popupView.querySelector(".popup__image");
 const popupViewTitle = popupView.querySelector(".popup__image-title");
 const closePopupView = popupView.querySelector(".popup__close-button");
