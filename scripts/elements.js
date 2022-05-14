@@ -1,16 +1,16 @@
 const popupAdd = document.querySelector("#new-card");
-const addElement = popupAdd.querySelector(".popup__add-form");
-const cardName = popupAdd.querySelector(".popup__input_type_name");
-const cardLink = popupAdd.querySelector(".popup__input_type_link");
-const closeAdd = popupAdd.querySelector(".popup__close-button");
-const submitAdd = popupAdd.querySelector(".popup__submit-button");
+const popupAddForm = popupAdd.querySelector(".popup__add-form");
+const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
+const popupAddInputLink = popupAdd.querySelector(".popup__input_type_link");
+const closePopupAdd = popupAdd.querySelector(".popup__close-button");
+const submitPopupAdd = popupAdd.querySelector(".popup__submit-button");
 
-const openAdd = document.querySelector(".profile__info-add-button");
+const openPopupAdd = document.querySelector(".profile__info-add-button");
 
 const popupView = document.querySelector(".popup__view-image");
-const imageView = popupView.querySelector(".popup__image");
-const imageTitle = popupView.querySelector(".popup__image-title");
-const closeView = popupView.querySelector(".popup__close-button");
+const popupViewImage = popupView.querySelector(".popup__image");
+const popupViewTitle = popupView.querySelector(".popup__image-title");
+const closePopupView = popupView.querySelector(".popup__close-button");
 
 const initialElements = [
   {
@@ -66,19 +66,19 @@ function openPopupAddHandler(evt) {
   popupAdd.classList.add("popup_opened");
 }
 
-openAdd.addEventListener("click", openPopupAddHandler);
+openPopupAdd.addEventListener("click", openPopupAddHandler);
 
 function closePopupAddHandler(evt) {
   popupAdd.classList.remove("popup_opened");
 }
-closeAdd.addEventListener("click", closePopupAddHandler);
+closePopupAdd.addEventListener("click", closePopupAddHandler);
 
-submitAdd.addEventListener("click", submitPopupAddHandler);
+submitPopupAdd.addEventListener("click", submitPopupAddHandler);
 
 function submitPopupAddHandler(evt) {
   evt.preventDefault();
-  const name = cardName.value;
-  const link = cardLink.value;
+  const name = popupAddInputName.value;
+  const link = popupAddInputLink.value;
 
   const element = elementTemplate.cloneNode(true);
   const elementImage = element.querySelector(".gallery__element-image");
@@ -91,6 +91,6 @@ function submitPopupAddHandler(evt) {
   elementImage.alt = name;
   elementPlaceName.textContent = name;
   elements.prepend(element);
-  addElement.reset();
+  popupAddForm.reset();
   closePopupAddHandler();
 }
