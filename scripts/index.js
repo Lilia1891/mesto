@@ -1,6 +1,6 @@
-const popup = document.querySelector(".popup");
-const openPopup = document.querySelector(".profile__avatar-edit-button");
-const closePopup = document.querySelector(".popup__close-button");
+const popupProfile = document.querySelector(".popup");
+const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
+const closePopupBtn = document.querySelector(".popup__close-button");
 const formElement = document.querySelector(".popup__container");
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
@@ -24,6 +24,13 @@ const closePopupView = popupView.querySelector(".popup__close-button");
 const elementTemplate = document.querySelector(".template-elements").content;
 const elements = document.querySelector(".gallery__elements");
 
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
+
 function formSubmitHandler(evt) {
   evt.preventDefault();
   const nameValue = nameInput.value;
@@ -34,19 +41,19 @@ function formSubmitHandler(evt) {
 }
 
 function openPopupHandler(evt) {
-  popup.classList.add("popup_opened");
+  openPopup(popupProfile);
   const nameValue = nameProfile.textContent;
   nameInput.value = nameValue;
   const jobValue = jobProfile.textContent;
   jobInput.value = jobValue;
 }
 
-openPopup.addEventListener("click", openPopupHandler);
+openPopupBtn.addEventListener("click", openPopupHandler);
 
 function closePopupHandler(evt) {
-  popup.classList.remove("popup_opened");
+  closePopup(popupProfile);
 }
-closePopup.addEventListener("click", closePopupHandler);
+closePopupBtn.addEventListener("click", closePopupHandler);
 
 formElement.addEventListener("submit", formSubmitHandler);
 
@@ -57,14 +64,14 @@ const handleLikeClick = (evt) => {
   evt.target.classList.toggle("gallery__element-like_active");
 };
 const openPopupViewHandler = (evt) => {
-  popupView.classList.add("popup_opened");
+  openPopup(popupView);
   popupViewImage.src = evt.target.src;
   popupViewImage.alt = evt.target.alt;
   popupViewTitle.textContent = evt.target.alt;
 };
 
 const closePopupViewHandler = (evt) => {
-  popupView.classList.remove("popup_opened");
+  closePopup(popupView);
 };
 closePopupView.addEventListener("click", closePopupViewHandler);
 
@@ -84,13 +91,13 @@ initialElements.forEach(({ name, link }) => {
 });
 
 function openPopupAddHandler(evt) {
-  popupAdd.classList.add("popup_opened");
+  openPopup(popupAdd);
 }
 
 openPopupAdd.addEventListener("click", openPopupAddHandler);
 
 function closePopupAddHandler(evt) {
-  popupAdd.classList.remove("popup_opened");
+  closePopup(popupAdd);
 }
 closePopupAddBtn.addEventListener("click", closePopupAddHandler);
 
