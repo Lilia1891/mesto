@@ -1,7 +1,7 @@
-const popupProfile = document.querySelector(".popup");
+const popupProfile = document.querySelector(".popup__profile");
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
 const closePopupBtn = document.querySelector(".popup__close-button");
-const formElement = document.querySelector(".popup__container");
+const formProfile = document.querySelector(".popup__form");
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
 const nameProfile = document.querySelector(".profile__info-name");
@@ -12,7 +12,6 @@ const popupAddForm = popupAdd.querySelector(".popup__add-form");
 const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
 const popupAddInputLink = popupAdd.querySelector(".popup__input_type_link");
 const closePopupAddBtn = popupAdd.querySelector(".popup__close-button");
-const submitPopupAddBtn = popupAdd.querySelector(".popup__submit-button");
 
 const openPopupAdd = document.querySelector(".profile__info-add-button");
 
@@ -55,7 +54,7 @@ function closePopupHandler(evt) {
 }
 closePopupBtn.addEventListener("click", closePopupHandler);
 
-formElement.addEventListener("submit", formSubmitHandler);
+formProfile.addEventListener("submit", formSubmitHandler);
 
 const handleDeleteClick = (evt) => {
   evt.target.closest(".gallery__element").remove();
@@ -106,14 +105,14 @@ function closePopupAddHandler(evt) {
 }
 closePopupAddBtn.addEventListener("click", closePopupAddHandler);
 
-submitPopupAddBtn.addEventListener("click", submitPopupAddHandler);
-
 function submitPopupAddHandler(evt) {
-  evt.preventDefault();
   const name = popupAddInputName.value;
   const link = popupAddInputLink.value;
   const element = cloneElement(name, link);
   elements.prepend(element);
   popupAddForm.reset();
   closePopupAddHandler();
+  evt.preventDefault();
 }
+
+popupAddForm.addEventListener("submit", submitPopupAddHandler);
