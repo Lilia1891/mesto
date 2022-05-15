@@ -1,4 +1,4 @@
-const popupAdd = document.querySelector("#new-card");
+const popupAdd = document.querySelector(".popup__add-card");
 const popupAddForm = popupAdd.querySelector(".popup__add-form");
 const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
 const popupAddInputLink = popupAdd.querySelector(".popup__input_type_link");
