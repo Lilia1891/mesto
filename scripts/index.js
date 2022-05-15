@@ -85,9 +85,13 @@ function createCard(name, link) {
   return element;
 }
 
-initialElements.forEach(({ name, link }) => {
+function renderCard(name, link) {
   const element = createCard(name, link);
-  elements.append(element);
+  elements.prepend(element);
+}
+
+initialElements.forEach(({ name, link }) => {
+  renderCard(name, link);
 });
 
 function openPopupAddHandler(evt) {
@@ -105,8 +109,7 @@ function submitPopupAddHandler(evt) {
   evt.preventDefault();
   const name = popupAddInputName.value;
   const link = popupAddInputLink.value;
-  const element = createCard(name, link);
-  elements.prepend(element);
+  renderCard(name, link);
   popupAddForm.reset();
   closePopupAddHandler();
 }
