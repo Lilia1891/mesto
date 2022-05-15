@@ -2,8 +2,8 @@ const popupAdd = document.querySelector(".popup__add-card");
 const popupAddForm = popupAdd.querySelector(".popup__add-form");
 const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
 const popupAddInputLink = popupAdd.querySelector(".popup__input_type_link");
-const closePopupAdd = popupAdd.querySelector(".popup__close-button");
-const submitPopupAdd = popupAdd.querySelector(".popup__submit-button");
+const closePopupAddBtn = popupAdd.querySelector(".popup__close-button");
+const submitPopupAddBtn = popupAdd.querySelector(".popup__submit-button");
 
 const openPopupAdd = document.querySelector(".profile__info-add-button");
 
@@ -11,33 +11,6 @@ const popupView = document.querySelector("#view-image");
 const popupViewImage = popupView.querySelector(".popup__image");
 const popupViewTitle = popupView.querySelector(".popup__image-title");
 const closePopupView = popupView.querySelector(".popup__close-button");
-
-const initialElements = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 
 const elementTemplate = document.querySelector(".template-elements").content;
 const elements = document.querySelector(".gallery__elements");
@@ -83,9 +56,9 @@ openPopupAdd.addEventListener("click", openPopupAddHandler);
 function closePopupAddHandler(evt) {
   popupAdd.classList.remove("popup_opened");
 }
-closePopupAdd.addEventListener("click", closePopupAddHandler);
+closePopupAddBtn.addEventListener("click", closePopupAddHandler);
 
-submitPopupAdd.addEventListener("click", submitPopupAddHandler);
+submitPopupAddBtn.addEventListener("click", submitPopupAddHandler);
 
 function submitPopupAddHandler(evt) {
   evt.preventDefault();
