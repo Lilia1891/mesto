@@ -75,7 +75,7 @@ const closePopupViewHandler = (evt) => {
 };
 closePopupView.addEventListener("click", closePopupViewHandler);
 
-initialElements.forEach(({ name, link }) => {
+function cloneElement(name, link) {
   const element = elementTemplate.cloneNode(true);
   const elementImage = element.querySelector(".gallery__element-image");
   const elementPlaceName = element.querySelector(".gallery__element-title");
@@ -87,6 +87,11 @@ initialElements.forEach(({ name, link }) => {
   elementImage.src = link;
   elementImage.alt = name;
   elementPlaceName.textContent = name;
+  return element;
+}
+
+initialElements.forEach(({ name, link }) => {
+  const element = cloneElement(name, link);
   elements.append(element);
 });
 
@@ -107,18 +112,7 @@ function submitPopupAddHandler(evt) {
   evt.preventDefault();
   const name = popupAddInputName.value;
   const link = popupAddInputLink.value;
-
-  const element = elementTemplate.cloneNode(true);
-  const elementImage = element.querySelector(".gallery__element-image");
-  const elementPlaceName = element.querySelector(".gallery__element-title");
-  const elementDeleteButton = element.querySelector(".gallery__element-delete");
-  const elementLikeButton = element.querySelector(".gallery__element-like");
-  elementDeleteButton.addEventListener("click", handleDeleteClick);
-  elementLikeButton.addEventListener("click", handleLikeClick);
-  elementImage.addEventListener("click", openPopupViewHandler);
-  elementImage.src = link;
-  elementImage.alt = name;
-  elementPlaceName.textContent = name;
+  const element = cloneElement(name, link);
   elements.prepend(element);
   popupAddForm.reset();
   closePopupAddHandler();
