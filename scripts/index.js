@@ -15,7 +15,7 @@ const closePopupAddBtn = popupAdd.querySelector(".popup__close-button");
 
 const openPopupAdd = document.querySelector(".profile__info-add-button");
 
-const popupView = document.querySelector("#view-image");
+const popupView = document.querySelector(".popup_view-image");
 const popupViewImage = popupView.querySelector(".popup__image");
 const popupViewTitle = popupView.querySelector(".popup__image-title");
 const closePopupView = popupView.querySelector(".popup__close-button");
@@ -38,11 +38,9 @@ function formSubmitHandler(evt) {
 }
 
 function openPopupHandler(evt) {
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = jobProfile.textContent;
   openPopup(popupProfile);
-  const nameValue = nameProfile.textContent;
-  nameInput.value = nameValue;
-  const jobValue = jobProfile.textContent;
-  jobInput.value = jobValue;
 }
 
 openPopupBtn.addEventListener("click", openPopupHandler);
@@ -61,10 +59,10 @@ const handleLikeClick = (evt) => {
   evt.target.classList.toggle("gallery__element-like_active");
 };
 const openPopupViewHandler = (evt) => {
-  openPopup(popupView);
   popupViewImage.src = evt.target.src;
   popupViewImage.alt = evt.target.alt;
   popupViewTitle.textContent = evt.target.alt;
+  openPopup(popupView);
 };
 
 const closePopupViewHandler = (evt) => {
@@ -72,7 +70,7 @@ const closePopupViewHandler = (evt) => {
 };
 closePopupView.addEventListener("click", closePopupViewHandler);
 
-function cloneElement(name, link) {
+function createCard(name, link) {
   const element = elementTemplate.cloneNode(true);
   const elementImage = element.querySelector(".gallery__element-image");
   const elementPlaceName = element.querySelector(".gallery__element-title");
@@ -88,7 +86,7 @@ function cloneElement(name, link) {
 }
 
 initialElements.forEach(({ name, link }) => {
-  const element = cloneElement(name, link);
+  const element = createCard(name, link);
   elements.append(element);
 });
 
@@ -104,13 +102,13 @@ function closePopupAddHandler(evt) {
 closePopupAddBtn.addEventListener("click", closePopupAddHandler);
 
 function submitPopupAddHandler(evt) {
+  evt.preventDefault();
   const name = popupAddInputName.value;
   const link = popupAddInputLink.value;
-  const element = cloneElement(name, link);
+  const element = createCard(name, link);
   elements.prepend(element);
   popupAddForm.reset();
   closePopupAddHandler();
-  evt.preventDefault();
 }
 
 popupAddForm.addEventListener("submit", submitPopupAddHandler);
