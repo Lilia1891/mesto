@@ -1,22 +1,24 @@
-const forms = document.querySelectorAll(".popup__form");
+const enableValidation = () => {
+  const forms = document.querySelectorAll(".popup__form");
 
-forms.forEach(function (form) {
-  const formInputs = Array.from(form.querySelectorAll(".form__input"));
-  const submitBtn = form.querySelector(".popup__submit-button");
-  submitBtn.setAttribute("disabled", true);
+  forms.forEach(function (form) {
+    const formInputs = Array.from(form.querySelectorAll(".form__input"));
+    const submitBtn = form.querySelector(".popup__submit-button");
+    toggleButtonState(formInputs, submitBtn);
 
-  form.addEventListener("submit", function (evt) {
-    evt.preventDefault();
-  });
-
-  formInputs.forEach(function (input) {
-    input.addEventListener("input", function (evt) {
-      checkInputValidity(input, inputError);
-      toggleButtonState(formInputs, submitBtn);
+    form.addEventListener("submit", function (evt) {
+      evt.preventDefault();
     });
-    const inputError = form.querySelector(`.${input.id}-error`);
+
+    formInputs.forEach(function (input) {
+      input.addEventListener("input", function (evt) {
+        checkInputValidity(input, inputError);
+        toggleButtonState(formInputs, submitBtn);
+      });
+      const inputError = form.querySelector(`.${input.id}-error`);
+    });
   });
-});
+};
 
 const showError = (input, errorMessage, inputError) => {
   input.classList.add("popup__input_type_error");
@@ -53,3 +55,5 @@ const toggleButtonState = (formInputs, submitBtn) => {
     submitBtn.removeAttribute("disabled");
   }
 };
+
+enableValidation();
