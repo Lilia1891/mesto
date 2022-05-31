@@ -20,14 +20,16 @@ const showError = (input, errorMessage, inputError) => {
   inputError.classList.add("popup__input-error_active");
 };
 
-const hideError = (input) => {
+const hideError = (input, inputError) => {
   input.classList.remove("popup__input_type_error");
+  inputError.textContent = "";
+  inputError.classList.remove("popup__input-error_active");
 };
 
 const checkInputValidity = (input, inputError) => {
   if (!input.validity.valid) {
     showError(input, input.validationMessage, inputError);
   } else {
-    hideError(input);
+    hideError(input, inputError);
   }
 };
