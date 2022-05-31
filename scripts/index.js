@@ -9,7 +9,7 @@ const jobProfile = document.querySelector(".profile__info-occupation");
 
 const popupAdd = document.querySelector(".popup_add-card");
 const popupAddForm = popupAdd.querySelector(".popup__add-form");
-const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
+const popupAddInputName = popupAdd.querySelector(".popup__input_type_place");
 const popupAddInputLink = popupAdd.querySelector(".popup__input_type_link");
 const closePopupAddBtn = popupAdd.querySelector(".popup__close-button");
 
