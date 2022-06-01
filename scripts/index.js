@@ -30,6 +30,18 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
+function closePopupOverlay(popup) {
+  popup.addEventListener("mousedown", (evt) => {
+    closePopup(evt.target);
+  });
+}
+
+function closePopupEsc(popup) {
+  popup.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") closePopup(evt.target);
+  });
+}
+
 function formSubmitHandler(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
