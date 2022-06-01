@@ -1,3 +1,4 @@
+const popups = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup_profile");
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
 const closePopupBtn = document.querySelector(".popup__close-button");
@@ -30,17 +31,15 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-function closePopupOverlay(popup) {
+popups.forEach(function (popup) {
   popup.addEventListener("mousedown", (evt) => {
     closePopup(evt.target);
   });
-}
 
-function closePopupEsc(popup) {
-  popup.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") closePopup(evt.target);
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") closePopup(popup);
   });
-}
+});
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
