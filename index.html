@@ -47,7 +47,6 @@
           <h3 class="popup__title">Редактировать профиль</h3>
           <input
             class="popup__input popup__input_type_name"
-            id="popup__input_type_name"
             type="text"
             value="Жак-Ив Кусто"
             name="name"
@@ -55,11 +54,10 @@
             maxlength="40"
             required
           />
-          <span class="popup__input-error popup__input_type_name-error"></span>
+          <span class="popup__input-error popup__input-error_name"></span>
 
           <input
             class="popup__input popup__input_type_job"
-            id="popup__input_type_job"
             type="text"
             value="Исследователь океана"
             name="job"
@@ -67,7 +65,7 @@
             maxlength="200"
             required
           />
-          <span class="popup__input-error popup__input_type_job-error"></span>
+          <span class="popup__input-error popup__input-error_job"></span>
 
           <button disabled class="popup__submit-button" type="submit">
             Сохранить
@@ -87,25 +85,23 @@
           <h3 class="popup__title">Новое место</h3>
           <input
             class="popup__input popup__input_type_place"
-            id="popup__input_type_place"
             type="text"
             placeholder="Название"
-            name="name"
+            name="place"
             minlength="2"
             maxlength="30"
             required
           />
-          <span class="popup__input-error popup__input_type_place-error"></span>
+          <span class="popup__input-error popup__input-error_place"></span>
 
           <input
             class="popup__input popup__input_type_link"
-            id="popup__input_type_link"
             type="url"
             placeholder="Ссылка на картинку"
             name="link"
             required
           />
-          <span class="popup__input-error popup__input_type_link-error"></span>
+          <span class="popup__input-error popup__input-error_link"></span>
 
           <button class="popup__submit-button" type="submit">Создать</button>
         </form>

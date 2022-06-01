@@ -15,7 +15,9 @@ const enableValidation = (config) => {
         checkInputValidity(input, inputError, config);
         toggleButtonState(formInputs, submitBtn, config);
       });
-      const inputError = form.querySelector(`.${input.id}-error`);
+      const inputError = form.querySelector(
+        `.popup__input-error_${input.name}`
+      );
     });
   });
 };
