@@ -20,7 +20,7 @@ const setEventListeners = (form, config) => {
       checkInputValidity(input, inputError, config);
       toggleButtonState(formInputs, submitBtn, config);
     });
-    const inputError = form.querySelector(`.popup__input-error_${input.name}`);
+    const inputError = form.querySelector(config.inputError + input.name);
   });
 };
 
@@ -67,6 +67,7 @@ const config = {
   inactiveButtonClass: "popup__submit-button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active",
+  inputError: `.popup__input-error_`,
 };
 
 enableValidation(config);
