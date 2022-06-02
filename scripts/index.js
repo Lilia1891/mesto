@@ -26,18 +26,23 @@ const elements = document.querySelector(".gallery__elements");
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closeByEscape);
 }
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeByEscape);
+}
+
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
 }
 
 popups.forEach(function (popup) {
   popup.addEventListener("mousedown", (evt) => {
     closePopup(evt.target);
-  });
-
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") closePopup(popup);
   });
 });
 
