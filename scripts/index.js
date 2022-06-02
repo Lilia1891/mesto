@@ -13,6 +13,7 @@ const popupAddForm = popupAdd.querySelector(".popup__add-form");
 const popupAddInputName = popupAdd.querySelector(".popup__input_type_place");
 const popupAddInputLink = popupAdd.querySelector(".popup__input_type_link");
 const closePopupAddBtn = popupAdd.querySelector(".popup__close-button");
+const submitPopupAddBtn = popupAdd.querySelector(".popup__submit-button");
 
 const openPopupAdd = document.querySelector(".profile__info-add-button");
 
@@ -112,6 +113,10 @@ initialElements.forEach(({ name, link }) => {
 
 function openPopupAddHandler(evt) {
   openPopup(popupAdd);
+  if (popupAddInputName.value === "" || popupAddInputLink.value === "") {
+    submitPopupAddBtn.classList.add("popup__submit-button_disabled");
+    submitPopupAddBtn.setAttribute("disabled", true);
+  }
 }
 
 openPopupAdd.addEventListener("click", openPopupAddHandler);
