@@ -46,7 +46,7 @@ popups.forEach(function (popup) {
   });
 });
 
-function formSubmitHandler(evt) {
+function HandleProfileformSubmit(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
@@ -66,7 +66,7 @@ function closePopupHandler(evt) {
 }
 closePopupBtn.addEventListener("click", closePopupHandler);
 
-formProfile.addEventListener("submit", formSubmitHandler);
+formProfile.addEventListener("submit", HandleProfileformSubmit);
 
 const handleDeleteClick = (evt) => {
   evt.target.closest(".gallery__element").remove();
