@@ -2,23 +2,25 @@ const enableValidation = (config) => {
   const forms = document.querySelectorAll(config.formSelector);
 
   forms.forEach(function (form) {
-    const formInputs = Array.from(form.querySelectorAll(config.inputSelector));
-    const submitBtn = form.querySelector(config.submitButtonSelector);
-    toggleButtonState(formInputs, submitBtn, config);
+    setEventListeners(form, config);
+  });
+};
 
-    form.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
+const setEventListeners = (form, config) => {
+  const formInputs = Array.from(form.querySelectorAll(config.inputSelector));
+  const submitBtn = form.querySelector(config.submitButtonSelector);
+  toggleButtonState(formInputs, submitBtn, config);
 
-    formInputs.forEach(function (input) {
-      input.addEventListener("input", function (evt) {
-        checkInputValidity(input, inputError, config);
-        toggleButtonState(formInputs, submitBtn, config);
-      });
-      const inputError = form.querySelector(
-        `.popup__input-error_${input.name}`
-      );
+  form.addEventListener("submit", function (evt) {
+    evt.preventDefault();
+  });
+
+  formInputs.forEach(function (input) {
+    input.addEventListener("input", function (evt) {
+      checkInputValidity(input, inputError, config);
+      toggleButtonState(formInputs, submitBtn, config);
     });
+    const inputError = form.querySelector(`.popup__input-error_${input.name}`);
   });
 };
 
