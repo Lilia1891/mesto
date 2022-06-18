@@ -3,7 +3,7 @@ class FormValidator {
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
-    this._inputErrorClass = config._inputErrorClass;
+    this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._inputError = config.inputError;
     this._form = form;
@@ -42,7 +42,6 @@ class FormValidator {
     if (this._hasInvalidInput(formInputs)) {
       submitBtn.classList.add(this._inactiveButtonClass);
       submitBtn.setAttribute("disabled", true);
-      console.log(this._inactiveButtonClass);
     } else {
       submitBtn.classList.remove(this._inactiveButtonClass);
       submitBtn.removeAttribute("disabled");
