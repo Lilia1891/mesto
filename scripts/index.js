@@ -1,3 +1,6 @@
+import { initialElements, config } from "./constants.js";
+import FormValidator from "./formValidator.js";
+
 const popups = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup_profile");
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
@@ -31,6 +34,13 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
+const formValidators = {};
+
+Array.from(document.forms).forEach((formElement) => {
+  formValidators[formElement.name] = new FormValidator(config, form);
+  formValidators[formElement.name].enableValidation();
+});
+
 popups.forEach(function (popup) {
   popup.addEventListener("mousedown", (evt) => {
     closePopup(evt.target);
@@ -52,6 +62,7 @@ function openPopupHandler(evt) {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   openPopup(popupProfile);
+  formValidators[formProfile.name].cleanUpForm();
 }
 
 openPopupBtn.addEventListener("click", openPopupHandler);
@@ -122,6 +133,7 @@ function submitPopupAddHandler(evt) {
   const link = popupAddInputLink.value;
   renderCard(name, link);
   popupAddForm.reset();
+  formValidators[popupAddForm.name].cleanUpForm();
   closePopupAddHandler();
 }
 
