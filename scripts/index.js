@@ -37,7 +37,7 @@ function closePopup(popup) {
 const formValidators = {};
 
 Array.from(document.forms).forEach((formElement) => {
-  formValidators[formElement.name] = new FormValidator(config, form);
+  formValidators[formElement.name] = new FormValidator(config, formElement);
   formValidators[formElement.name].enableValidation();
 });
 
@@ -118,6 +118,7 @@ initialElements.forEach(({ name, link }) => {
 
 function openPopupAddHandler(evt) {
   openPopup(popupAdd);
+  formValidators[popupAddForm.name].cleanUpForm();
 }
 
 openPopupAdd.addEventListener("click", openPopupAddHandler);
@@ -133,7 +134,6 @@ function submitPopupAddHandler(evt) {
   const link = popupAddInputLink.value;
   renderCard(name, link);
   popupAddForm.reset();
-  formValidators[popupAddForm.name].cleanUpForm();
   closePopupAddHandler();
 }
 
