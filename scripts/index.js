@@ -1,7 +1,7 @@
 import { initialElements, config, configCard } from "./constants.js";
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
-import { openPopup } from "./utils.js";
+import { openPopup, closePopup } from "./utils.js";
 
 const popups = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup_profile");
@@ -29,23 +29,6 @@ const closePopupView = popupView.querySelector(".popup__close-button");
 
 const elementTemplate = document.querySelector(".template-elements").content;
 const elements = document.querySelector(".gallery__elements");
-
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closeByEscape);
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closeByEscape);
-}
-
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    closePopup(openedPopup);
-  }
-}
 
 const formValidators = {};
 
