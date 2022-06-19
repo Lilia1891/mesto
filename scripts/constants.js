@@ -42,5 +42,4 @@ export const configCard = {
   likeClass: ".gallery__element-like",
   likeActiveClass: "gallery__element-like_active",
   elementClass: ".gallery__element",
-  popupClass: ".popup__image",
 };

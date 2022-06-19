@@ -9,7 +9,6 @@ class Card {
     this._name = name;
     this._link = link;
     this._elementClass = configCard.elementClass;
-    this._popupClass = configCard.popupClass;
   }
 
   create() {
@@ -42,13 +41,7 @@ class Card {
     evt.target.classList.toggle(this._likeActiveClass);
   }
 
-  _openPopup(evt) {
-    console.log(this._popupClass);
-    this._popupClass.src = evt.target.src;
-    this._popupClass.alt = evt.target.alt;
-    popupViewTitle.textContent = evt.target.alt;
-    openPopup(popupView);
-  }
+  _openPopup(evt) {}
 }
 
 export default Card;
