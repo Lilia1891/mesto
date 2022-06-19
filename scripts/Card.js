@@ -1,3 +1,9 @@
+import { openPopup } from "./utils.js";
+
+const popupView = document.querySelector(".popup_view-image");
+const popupViewImage = popupView.querySelector(".popup__image");
+const popupViewTitle = popupView.querySelector(".popup__image-title");
+
 class Card {
   constructor(name, link, configCard) {
     this._templateClass = configCard.templateClass;
@@ -41,7 +47,12 @@ class Card {
     evt.target.classList.toggle(this._likeActiveClass);
   }
 
-  _openPopup(evt) {}
+  _openPopup() {
+    popupViewImage.src = this._link;
+    popupViewImage.alt = this._name;
+    popupViewTitle.textContent = this._name;
+    openPopup(popupView);
+  }
 }
 
 export default Card;
