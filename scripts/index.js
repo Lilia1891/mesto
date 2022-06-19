@@ -1,5 +1,6 @@
-import { initialElements, config } from "./constants.js";
-import FormValidator from "./formValidator.js";
+import { initialElements, config, configCard } from "./constants.js";
+import FormValidator from "./FormValidator.js";
+import Card from "./Card.js";
 
 const popups = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup_profile");
@@ -108,7 +109,9 @@ function createCard(name, link) {
 }
 
 function renderCard(name, link) {
-  const element = createCard(name, link);
+  const card = new Card(name, link, configCard);
+  const element = card.create();
+  //const element = createCard(name, link);
   elements.prepend(element);
 }
 

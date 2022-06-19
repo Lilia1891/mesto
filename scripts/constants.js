@@ -33,3 +33,14 @@ export const config = {
   errorClass: "popup__input-error_active",
   inputError: `.popup__input-error_`,
 };
+
+export const configCard = {
+  templateClass: ".template-elements",
+  imageClass: ".gallery__element-image",
+  titleClass: ".gallery__element-title",
+  deleteClass: ".gallery__element-delete",
+  likeClass: ".gallery__element-like",
+  likeActiveClass: "gallery__element-like_active",
+  elementClass: ".gallery__element",
+  popupClass: ".popup__image",
+};
