@@ -34,7 +34,7 @@ export const config = {
   inputError: `.popup__input-error_`,
 };
 
-export const configCard = {
+export const cardSelector = {
   templateClass: ".template-elements",
   imageClass: ".gallery__element-image",
   titleClass: ".gallery__element-title",

@@ -1,4 +1,4 @@
-import { initialElements, config, configCard } from "./constants.js";
+import { initialElements, config, cardSelector } from "./constants.js";
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 import { openPopup, closePopup } from "./utils.js";
@@ -29,7 +29,6 @@ const closePopupView = popupView.querySelector(".popup__close-button");
 
 const elementTemplate = document.querySelector(".template-elements").content;
 const elements = document.querySelector(".gallery__elements");
-
 const formValidators = {};
 
 Array.from(document.forms).forEach((formElement) => {
@@ -43,7 +42,7 @@ popups.forEach(function (popup) {
   });
 });
 
-function HandleProfileformSubmit(evt) {
+function handleProfileformSubmit(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
@@ -64,43 +63,15 @@ function closePopupHandler(evt) {
 }
 closePopupBtn.addEventListener("click", closePopupHandler);
 
-formProfile.addEventListener("submit", HandleProfileformSubmit);
-
-const handleDeleteClick = (evt) => {
-  evt.target.closest(".gallery__element").remove();
-};
-const handleLikeClick = (evt) => {
-  evt.target.classList.toggle("gallery__element-like_active");
-};
-const openPopupViewHandler = (evt) => {
-  popupViewImage.src = evt.target.src;
-  popupViewImage.alt = evt.target.alt;
-  popupViewTitle.textContent = evt.target.alt;
-  openPopup(popupView);
-};
+formProfile.addEventListener("submit", handleProfileformSubmit);
 
 const closePopupViewHandler = (evt) => {
   closePopup(popupView);
 };
 closePopupView.addEventListener("click", closePopupViewHandler);
 
-function createCard(name, link) {
-  const element = elementTemplate.cloneNode(true);
-  const elementImage = element.querySelector(".gallery__element-image");
-  const elementPlaceName = element.querySelector(".gallery__element-title");
-  const elementDeleteButton = element.querySelector(".gallery__element-delete");
-  const elementLikeButton = element.querySelector(".gallery__element-like");
-  elementDeleteButton.addEventListener("click", handleDeleteClick);
-  elementLikeButton.addEventListener("click", handleLikeClick);
-  elementImage.addEventListener("click", openPopupViewHandler);
-  elementImage.src = link;
-  elementImage.alt = name;
-  elementPlaceName.textContent = name;
-  return element;
-}
-
 function renderCard(name, link) {
-  const card = new Card(name, link, configCard);
+  const card = new Card(name, link, cardSelector);
   const element = card.create();
   //const element = createCard(name, link);
   elements.prepend(element);
