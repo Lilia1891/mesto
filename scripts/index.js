@@ -73,7 +73,6 @@ closePopupView.addEventListener("click", closePopupViewHandler);
 function renderCard(name, link) {
   const card = new Card(name, link, cardSelector);
   const element = card.create();
-  //const element = createCard(name, link);
   elements.prepend(element);
 }
 
@@ -81,12 +80,8 @@ initialElements.forEach(({ name, link }) => {
   renderCard(name, link);
 });
 
-function openPopupAddHandler(evt) {
+function openPopupAddHandler() {
   openPopup(popupAdd);
-  if (popupAddInputName.value === "" || popupAddInputLink.value === "") {
-    submitPopupAddBtn.classList.add("popup__submit-button_disabled");
-    submitPopupAddBtn.setAttribute("disabled", true);
-  }
   formValidators[popupAddForm.name].cleanUpForm();
 }
 
