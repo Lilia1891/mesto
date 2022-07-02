@@ -72,7 +72,15 @@ const closePopupViewHandler = (evt) => {
 closePopupView.addEventListener("click", closePopupViewHandler);
 
 function renderCard(name, link) {
+  const card = createCard(name, link);
+  addCard(card);
+}
+
+function createCard(name, link) {
   const card = new Card(name, link, cardSelector);
+  return card;
+}
+function addCard(card) {
   const element = card.create();
   elements.prepend(element);
 }

@@ -18,6 +18,12 @@ class Card {
   }
 
   create() {
+    const element = this._createElement();
+    this._setEventListeners(element);
+    return element;
+  }
+
+  _createElement() {
     const elementTemplate = document.querySelector(this._templateClass).content;
     const element = elementTemplate.cloneNode(true);
     const elementPlaceName = element.querySelector(this._titleClass);
@@ -25,7 +31,6 @@ class Card {
     elementImage.src = this._link;
     elementImage.alt = this._name;
     elementPlaceName.textContent = this._name;
-    this._setEventListeners(element);
     return element;
   }
 
