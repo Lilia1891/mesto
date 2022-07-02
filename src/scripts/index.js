@@ -2,6 +2,7 @@ import { initialElements, config, cardSelector } from "./constants.js";
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 import { openPopup, closePopup } from "./utils.js";
+import "../pages/index.css";
 
 const popups = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup_profile");
