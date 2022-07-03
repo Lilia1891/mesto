@@ -85,6 +85,11 @@ function addCard(card) {
   elements.prepend(element);
 }
 
+const cardsContainer = new Section({
+  items: initialElements.reverse(),
+  renderer: createCard,
+});
+
 initialElements.forEach(({ name, link }) => {
   renderCard(name, link);
 });
