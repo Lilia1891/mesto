@@ -49,25 +49,17 @@ function closePopupHandler(evt) {
 }
 closePopupBtn.addEventListener("click", closePopupHandler);
 
-//formProfile.addEventListener("submit", handleProfileformSubmit);
-
 const closePopupViewHandler = (evt) => {
   closePopup(popupView);
 };
 closePopupView.addEventListener("click", closePopupViewHandler);
 
-function renderCard(name, link) {
-  const card = createCard(name, link);
-  addCard(card);
-}
+// CARD
 
 function createCard(name, link) {
   const card = new Card(name, link, cardSelector);
-  return card;
-}
-function addCard(card) {
   const element = card.create();
-  elements.prepend(element);
+  return element;
 }
 
 const cardsContainer = new Section(
@@ -78,12 +70,13 @@ const cardsContainer = new Section(
   cardsContainerSelector
 );
 
+cardsContainer.renderAll();
+
+// NEW CARD POPUP
+
 const handleCardSubmit = (item) => {
   cardsContainer.addItem(item);
 };
-
-const user = new UserInfo(profileConfiguration);
-user.setUserInfo({ name: "Жак-Ив Кусто", job: "Исследователь океана" });
 
 const newCardPopup = new PopupWithForm(
   newPlacePopupSelector,
@@ -94,6 +87,11 @@ const newCardPopup = new PopupWithForm(
 );
 newCardPopup.setEventListeners();
 
+//USER INFO
+const user = new UserInfo(profileConfiguration);
+user.setUserInfo({ name: "Жак-Ив Кусто", job: "Исследователь океана" });
+
+//PROFILE POPUP
 function handleProfileformSubmit(data) {
   user.setUserInfo(data);
 }
@@ -114,10 +112,6 @@ const handleProfilePopupOpen = () => {
 
 openPopupBtn.addEventListener("click", handleProfilePopupOpen);
 
-initialElements.forEach(({ name, link }) => {
-  renderCard(name, link);
-});
-
 function openPopupAddHandler() {
   openPopup(popupAdd);
   formValidators[popupAddForm.name].cleanUpForm();
@@ -130,13 +124,13 @@ function closePopupAddHandler(evt) {
 }
 closePopupAddBtn.addEventListener("click", closePopupAddHandler);
 
-function submitPopupAddHandler(evt) {
+/*function submitPopupAddHandler(evt) {
   evt.preventDefault();
   const name = popupAddInputName.value;
   const link = popupAddInputLink.value;
   renderCard(name, link);
   popupAddForm.reset();
   closePopupAddHandler();
-}
+}*/
 
-popupAddForm.addEventListener("submit", submitPopupAddHandler);
+//popupAddForm.addEventListener("submit", submitPopupAddHandler);

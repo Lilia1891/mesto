@@ -55,7 +55,7 @@ export const popupConfiguration = {
   closeBtnSelector: "popup__close-button",
 };
 
-export const cardsContainerSelector = "gallery__elements";
+export const cardsContainerSelector = ".gallery__elements";
 export const profilePopupSelector = ".popup_profile";
 export const newPlacePopupSelector = ".popup_add-card";
 export const imagePopupSelector = ".popup_view-image";
