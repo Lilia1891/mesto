@@ -15,16 +15,14 @@ import {
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 import Section from "./Section.js";
-import { openPopup, closePopup } from "./utils.js";
+
 import "../pages/index.css";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { UserInfo } from "./UserInfo.js";
+import { PopupWithImage } from "./PopupWithImage.js";
 
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
 const openPopupAdd = document.querySelector(".profile__info-add-button");
-
-const popupView = document.querySelector(".popup_view-image");
-const closePopupView = popupView.querySelector(".popup__close-button");
 
 //Validation
 const formValidators = {};
@@ -35,9 +33,14 @@ Array.from(document.forms).forEach((formElement) => {
 });
 
 // CARD
+const handleCardClick = (name, link) => {
+  const popupView = new PopupWithImage(imagePopupSelector, popupConfiguration);
+  popupView.setEventListeners();
+  popupView.open(name, link);
+};
 
 function createCard(name, link) {
-  const card = new Card(name, link, cardSelector);
+  const card = new Card(name, link, cardSelector, handleCardClick);
   const element = card.create();
   return element;
 }
@@ -97,8 +100,3 @@ const handleProfilePopupOpen = () => {
 };
 
 openPopupBtn.addEventListener("click", handleProfilePopupOpen);
-
-const closePopupViewHandler = (evt) => {
-  closePopup(popupView);
-};
-closePopupView.addEventListener("click", closePopupViewHandler);

@@ -1,11 +1,5 @@
-import { openPopup } from "./utils.js";
-
-const popupView = document.querySelector(".popup_view-image");
-const popupViewImage = popupView.querySelector(".popup__image");
-const popupViewTitle = popupView.querySelector(".popup__image-title");
-
 class Card {
-  constructor(name, link, cardSelector) {
+  constructor(name, link, cardSelector, handleCardClick) {
     this._templateClass = cardSelector.templateClass;
     this._imageClass = cardSelector.imageClass;
     this._titleClass = cardSelector.titleClass;
@@ -15,6 +9,7 @@ class Card {
     this._name = name;
     this._link = link;
     this._elementClass = cardSelector.elementClass;
+    this._handleCardClick = handleCardClick;
   }
 
   create() {
@@ -42,13 +37,6 @@ class Card {
     evt.target.classList.toggle(this._likeActiveClass);
   }
 
-  _openPopup() {
-    popupViewImage.src = this._link;
-    popupViewImage.alt = this._name;
-    popupViewTitle.textContent = this._name;
-    openPopup(popupView);
-  }
-
   _setEventListeners(element) {
     const elementImage = element.querySelector(this._imageClass);
     const elementDeleteButton = element.querySelector(this._deleteClass);
@@ -59,8 +47,8 @@ class Card {
     elementLikeButton.addEventListener("click", (evt) => {
       this._like(evt);
     });
-    elementImage.addEventListener("click", (evt) => {
-      this._openPopup(evt);
+    elementImage.addEventListener("click", () => {
+      this._handleCardClick(this._name, this._link);
     });
   }
 }
