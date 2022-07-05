@@ -33,9 +33,10 @@ Array.from(document.forms).forEach((formElement) => {
 });
 
 // CARD
+const popupView = new PopupWithImage(imagePopupSelector, popupConfiguration);
+popupView.setEventListeners();
+
 const handleCardClick = (name, link) => {
-  const popupView = new PopupWithImage(imagePopupSelector, popupConfiguration);
-  popupView.setEventListeners();
   popupView.open(name, link);
 };
 
