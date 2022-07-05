@@ -67,7 +67,8 @@ const newCardPopup = new PopupWithForm(
   newPlaceFormName,
   popupConfiguration,
   formConfiguration,
-  handleCardSubmit
+  handleCardSubmit,
+  config.inactiveButtonClass
 );
 newCardPopup.setEventListeners();
 
@@ -92,6 +93,7 @@ const profilePopup = new PopupWithForm(
   popupConfiguration,
   formConfiguration,
   handleProfileformSubmit,
+  config.inactiveButtonClass,
   user.getUserInfo
 );
 profilePopup.setEventListeners();
