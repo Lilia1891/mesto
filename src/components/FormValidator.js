@@ -52,13 +52,17 @@ class FormValidator {
     }
   }
 
-  enableValidation() {
+  _setEventListeners() {
     this._formInputs.forEach((input) => {
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
         this._toggleButtonState();
       });
     });
+  }
+
+  enableValidation() {
+    this._setEventListeners();
     this._toggleButtonState();
   }
 
