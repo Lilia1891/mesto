@@ -12,14 +12,14 @@ import {
   profileFormName,
   profileConfiguration,
 } from "./constants.js";
-import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
-import Section from "./Section.js";
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
 
 import "../pages/index.css";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./UserInfo.js";
-import { PopupWithImage } from "./PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
 
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
 const openPopupAdd = document.querySelector(".profile__info-add-button");
