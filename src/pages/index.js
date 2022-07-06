@@ -59,7 +59,7 @@ cardsContainer.renderAll();
 // NEW CARD POPUP
 
 const handleCardSubmit = (item) => {
-  cardsContainer.addItem(item);
+  cardsContainer.addItem(item.place, item.link);
 };
 
 const newCardPopup = new PopupWithForm(
@@ -68,7 +68,7 @@ const newCardPopup = new PopupWithForm(
   popupConfiguration,
   formConfiguration,
   handleCardSubmit,
-  config.inactiveButtonClass
+  formValidators[newPlaceFormName].cleanUpForm
 );
 newCardPopup.setEventListeners();
 
@@ -80,7 +80,7 @@ openPopupAdd.addEventListener("click", handleNewCardPopupOpen);
 
 //USER INFO
 const user = new UserInfo(profileConfiguration);
-user.setUserInfo({ name: "Жак-Ив Кусто", job: "Исследователь океана" });
+user.setUserInfo({ title: "Жак-Ив Кусто", job: "Исследователь океана" });
 
 //PROFILE POPUP
 function handleProfileformSubmit(data) {
@@ -93,7 +93,7 @@ const profilePopup = new PopupWithForm(
   popupConfiguration,
   formConfiguration,
   handleProfileformSubmit,
-  config.inactiveButtonClass,
+  formValidators[profileFormName].cleanUpForm,
   user.getUserInfo
 );
 profilePopup.setEventListeners();

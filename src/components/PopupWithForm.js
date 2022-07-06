@@ -7,7 +7,7 @@ export class PopupWithForm extends Popup {
     popupConfig,
     { inputSelector, submitBtnSelector, formSelector },
     submitCallBack,
-    inactiveButtonClass,
+    cleanupFormCallBack,
     getterCallBack = null
   ) {
     super(popupSelector, popupConfig);
@@ -21,10 +21,7 @@ export class PopupWithForm extends Popup {
     this._inputs = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
-    this._submitBtn = this._formElement.querySelector(
-      `.${this._submitBtnSelector}`
-    );
-    this._inactiveButtonClass = inactiveButtonClass;
+    this._cleanupFormCallBack = cleanupFormCallBack;
   }
 
   _getInputValues() {
@@ -59,9 +56,8 @@ export class PopupWithForm extends Popup {
       this._setInputValues(this._getterCallBack());
     } else {
       this._formElement.reset();
-      this._submitBtn.classList.add(this._inactiveButtonClass);
-      this._submitBtn.setAttribute("disabled", true);
     }
+    this._cleanupFormCallBack();
     super.open();
   }
 
