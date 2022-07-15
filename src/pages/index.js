@@ -15,7 +15,7 @@ import {
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
-
+import { Api } from "../components/Api.js";
 import "../pages/index.css";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
@@ -23,6 +23,16 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
 const openPopupAdd = document.querySelector(".profile__info-add-button");
+
+//API
+
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-45",
+  headers: {
+    authorization: "636cc495-c287-427c-9f35-3c6c6a44b827",
+    "Content-Type": "application/json",
+  },
+});
 
 //Validation
 const formValidators = {};
@@ -80,7 +90,8 @@ openPopupAdd.addEventListener("click", handleNewCardPopupOpen);
 
 //USER INFO
 const user = new UserInfo(profileConfiguration);
-user.setUserInfo({ title: "Жак-Ив Кусто", job: "Исследователь океана" });
+const p = api.getUserInfo();
+p.then((data) => user.setUserInfo({ title: data.name, job: data.about }));
 
 //PROFILE POPUP
 function handleProfileformSubmit(data) {
