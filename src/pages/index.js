@@ -91,7 +91,10 @@ openPopupAdd.addEventListener("click", handleNewCardPopupOpen);
 //USER INFO
 const user = new UserInfo(profileConfiguration);
 const p = api.getUserInfo();
-p.then((data) => user.setUserInfo({ title: data.name, job: data.about }));
+p.then((data) => {
+  user.setUserInfo({ title: data.name, job: data.about, avatar: data.avatar });
+  console.log(data);
+});
 
 //PROFILE POPUP
 function handleProfileformSubmit(data) {

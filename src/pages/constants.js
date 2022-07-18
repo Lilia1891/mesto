@@ -65,4 +65,5 @@ export const profileFormName = "form";
 export const profileConfiguration = {
   nameSelector: ".profile__info-name",
   jobSelector: ".profile__info-occupation",
+  avatarSelector: ".profile__avatar",
 };
