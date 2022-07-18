@@ -1,5 +1,4 @@
 import {
-  initialElements,
   config,
   cardSelector,
   formConfiguration,
@@ -56,15 +55,17 @@ function createCard(name, link) {
   return element;
 }
 
-const cardsContainer = new Section(
-  {
-    items: initialElements,
-    renderer: createCard,
-  },
-  cardsContainerSelector
-);
+api.getInitialCards().then((data) => {
+  const cardsContainer = new Section(
+    {
+      items: data,
+      renderer: createCard,
+    },
+    cardsContainerSelector
+  );
 
-cardsContainer.renderAll();
+  cardsContainer.renderAll();
+});
 
 // NEW CARD POPUP
 
@@ -90,10 +91,8 @@ openPopupAdd.addEventListener("click", handleNewCardPopupOpen);
 
 //USER INFO
 const user = new UserInfo(profileConfiguration);
-const p = api.getUserInfo();
-p.then((data) => {
+api.getUserInfo().then((data) => {
   user.setUserInfo({ title: data.name, job: data.about, avatar: data.avatar });
-  console.log(data);
 });
 
 //PROFILE POPUP
