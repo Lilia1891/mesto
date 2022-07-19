@@ -34,5 +34,45 @@ export class Api {
       });
   }
 
+  editProfile(data) {
+    return fetch(this.baseUrl + "/users/me", {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        name: data.title,
+        about: data.job,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  addNewCard(item) {
+    return fetch(this.baseUrl + "/cards", {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify({
+        name: item.place,
+        link: item.link,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   // другие методы работы с API
 }

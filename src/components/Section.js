@@ -11,6 +11,10 @@ export default class Section {
     this._container.prepend(cardElement);
   }
 
+  setItems(items) {
+    this._items = items;
+  }
+
   renderAll() {
     this._items.forEach((item) => {
       this.addItem(item.name, item.link);

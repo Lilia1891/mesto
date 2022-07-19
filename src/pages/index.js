@@ -55,22 +55,26 @@ function createCard(name, link) {
   return element;
 }
 
-api.getInitialCards().then((data) => {
-  const cardsContainer = new Section(
-    {
-      items: data,
-      renderer: createCard,
-    },
-    cardsContainerSelector
-  );
+const cardsContainer = new Section(
+  {
+    items: [],
+    renderer: createCard,
+  },
+  cardsContainerSelector
+);
 
+api.getInitialCards().then((data) => {
+  cardsContainer.setItems(data);
   cardsContainer.renderAll();
 });
 
 // NEW CARD POPUP
 
 const handleCardSubmit = (item) => {
-  cardsContainer.addItem(item.place, item.link);
+  api.addNewCard(item).then((data) => {
+    console.log(data);
+    cardsContainer.addItem(data.name, data.link);
+  });
 };
 
 const newCardPopup = new PopupWithForm(
@@ -97,7 +101,13 @@ api.getUserInfo().then((data) => {
 
 //PROFILE POPUP
 function handleProfileformSubmit(data) {
-  user.setUserInfo(data);
+  api.editProfile(data).then((data) => {
+    user.setUserInfo({
+      title: data.name,
+      job: data.about,
+      avatar: data.avatar,
+    });
+  });
 }
 
 const profilePopup = new PopupWithForm(
