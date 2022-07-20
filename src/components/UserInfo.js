@@ -6,7 +6,7 @@ export class UserInfo {
     this._nameElement = document.querySelector(this._nameSelector);
     this._jobElement = document.querySelector(this._jobSelector);
     this._avatarElement = document.querySelector(this._avatarSelector);
-    this._profile = { title: "", job: "", avatar: "" };
+    this._profile = { title: "", job: "", avatar: "", id: "" };
   }
   _renderProfile() {
     this._nameElement.textContent = this._profile.title;
@@ -18,10 +18,19 @@ export class UserInfo {
     this._profile.title = data.title || "";
     this._profile.job = data.job || "";
     this._profile.avatar = data.avatar || "";
+    this._profile._id = data._id || "";
     this._renderProfile();
   }
 
   getUserInfo = () => {
     return this._profile;
   };
+
+  getUserAvatar() {
+    return this._profile.avatar;
+  }
+
+  getUserId() {
+    return this._profile._id;
+  }
 }

@@ -6,8 +6,8 @@ export default class Section {
     this._container = document.querySelector(this._containerSelector);
   }
 
-  addItem(place, link) {
-    const cardElement = this._renderer(place, link);
+  addItem(item) {
+    const cardElement = this._renderer(item);
     this._container.prepend(cardElement);
   }
 
@@ -17,7 +17,7 @@ export default class Section {
 
   renderAll() {
     this._items.forEach((item) => {
-      this.addItem(item.name, item.link);
+      this.addItem(item);
     });
   }
 }

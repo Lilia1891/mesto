@@ -13,6 +13,7 @@ export const cardSelector = {
   titleClass: ".gallery__element-title",
   deleteClass: ".gallery__element-delete",
   likeClass: ".gallery__element-like",
+  likeCounter: ".gallery__element-like-counter",
   likeActiveClass: "gallery__element-like_active",
   elementClass: ".gallery__element",
 };

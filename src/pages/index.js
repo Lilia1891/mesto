@@ -49,8 +49,8 @@ const handleCardClick = (name, link) => {
   popupView.open(name, link);
 };
 
-function createCard(name, link) {
-  const card = new Card(name, link, cardSelector, handleCardClick);
+function createCard(item) {
+  const card = new Card(item, 1, cardSelector, handleCardClick);
   const element = card.create();
   return element;
 }
@@ -64,7 +64,7 @@ const cardsContainer = new Section(
 );
 
 api.getInitialCards().then((data) => {
-  cardsContainer.setItems(data);
+  cardsContainer.setItems(data.reverse());
   cardsContainer.renderAll();
 });
 
@@ -72,8 +72,7 @@ api.getInitialCards().then((data) => {
 
 const handleCardSubmit = (item) => {
   api.addNewCard(item).then((data) => {
-    console.log(data);
-    cardsContainer.addItem(data.name, data.link);
+    cardsContainer.addItem(data);
   });
 };
 
