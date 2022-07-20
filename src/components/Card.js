@@ -11,6 +11,7 @@ class Card {
     this._deleteClass = cardSelector.deleteClass;
     this._likeClass = cardSelector.likeClass;
     this._likeActiveClass = cardSelector.likeActiveClass;
+    this._likeCounter = cardSelector.likeCounter;
     this._name = name;
     this._link = link;
     this._id = _id;
@@ -24,6 +25,7 @@ class Card {
   create() {
     const element = this._createElement();
     this._setEventListeners(element);
+    this._renderLikes();
     return element;
   }
 
@@ -34,6 +36,7 @@ class Card {
     const elementImage = element.querySelector(this._imageClass);
     this._elementLikeButton = element.querySelector(this._likeClass);
     this._elementLikeCounter = element.querySelector(this._likeCounter);
+    console.log(this._likeCounter);
     this._deleteButton = element.querySelector(this._deleteClass);
     elementImage.src = this._link;
     elementImage.alt = this._name;
@@ -52,6 +55,7 @@ class Card {
     } else {
       this._elementLikeButton.classList.remove(this._likeActiveClass);
     }
+    this._elementLikeCounter.textContent = this._likes.length;
   }
 
   _delete(evt) {
