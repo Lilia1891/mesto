@@ -3,7 +3,8 @@ class Card {
     { name, link, _id, likes, owner: { _id: ownerId } },
     userId,
     cardSelector,
-    handleCardClick
+    handleCardClick,
+    handleCardDelete
   ) {
     this._templateClass = cardSelector.templateClass;
     this._imageClass = cardSelector.imageClass;
@@ -21,6 +22,7 @@ class Card {
     this._likes = likes;
     this._elementClass = cardSelector.elementClass;
     this._handleCardClick = handleCardClick;
+    this._handleCardDelete = handleCardDelete;
   }
 
   create() {
@@ -59,7 +61,8 @@ class Card {
   }
 
   _delete(evt) {
-    evt.target.closest(this._elementClass).remove();
+    this._handleCardDelete();
+    //evt.target.closest(this._elementClass).remove();
   }
 
   _like(evt) {
@@ -71,7 +74,6 @@ class Card {
     const elementLikeButton = element.querySelector(this._likeClass);
     if (this._isOwner) {
       this._deleteButton.classList.add(this._deleteActiveClass);
-      console.log(this._deleteActiveClass);
       this._deleteButton.addEventListener("click", (evt) => {
         this._delete(evt);
       });

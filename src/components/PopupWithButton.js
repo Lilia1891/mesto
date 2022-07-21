@@ -8,14 +8,13 @@ export class PopupWithButton extends Popup {
     this._submitBtnElement = this._popup.querySelector(submitBtnSelector);
   }
 
-  _handleSubmit = (evt) => {
-    evt.preventDefault();
+  _handleSubmit = () => {
     this._submitCallBack();
     this.close();
   };
 
   setEventListeners() {
     super.setEventListeners();
-    this._submitBtnElement.addEventListener("submit", this._handleSubmit);
+    this._submitBtnElement.addEventListener("click", this._handleSubmit);
   }
 }

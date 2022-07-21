@@ -50,9 +50,18 @@ popupView.setEventListeners();
 const handleCardClick = (name, link) => {
   popupView.open(name, link);
 };
+const handleCardDelete = () => {
+  confirmPopup.open();
+};
 
 function createCard(item) {
-  const card = new Card(item, user.getUserId(), cardSelector, handleCardClick);
+  const card = new Card(
+    item,
+    user.getUserId(),
+    cardSelector,
+    handleCardClick,
+    handleCardDelete
+  );
   const element = card.create();
   return element;
 }
@@ -137,3 +146,4 @@ const confirmPopup = new PopupWithButton(
   handlerCardDelete
 );
 confirmPopup.setEventListeners();
+//confirmPopup.open();
