@@ -9,12 +9,17 @@ export class PopupWithButton extends Popup {
   }
 
   _handleSubmit = () => {
-    this._submitCallBack();
+    this._submitCallBack(this._item);
     this.close();
   };
 
   setEventListeners() {
     super.setEventListeners();
     this._submitBtnElement.addEventListener("click", this._handleSubmit);
+  }
+
+  open(item) {
+    super.open();
+    this._item = item;
   }
 }

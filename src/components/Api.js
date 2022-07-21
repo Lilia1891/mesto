@@ -74,5 +74,20 @@ export class Api {
       });
   }
 
+  deleteCard(cardId) {
+    return fetch(this.baseUrl + "/cards/" + cardId, {
+      method: "DELETE",
+      headers: this.headers,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   // другие методы работы с API
 }

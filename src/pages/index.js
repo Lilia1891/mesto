@@ -50,8 +50,14 @@ popupView.setEventListeners();
 const handleCardClick = (name, link) => {
   popupView.open(name, link);
 };
-const handleCardDelete = () => {
-  confirmPopup.open();
+const handleCardDelete = (card) => {
+  api.deleteCard(card.getId()).then(() => {
+    card.deleteCard();
+  });
+};
+
+const openConfirmPopupHandler = (card) => {
+  confirmPopup.open(card);
 };
 
 function createCard(item) {
@@ -60,7 +66,8 @@ function createCard(item) {
     user.getUserId(),
     cardSelector,
     handleCardClick,
-    handleCardDelete
+    handleCardDelete,
+    openConfirmPopupHandler
   );
   const element = card.create();
   return element;
@@ -135,8 +142,8 @@ openPopupBtn.addEventListener("click", handleProfilePopupOpen);
 
 //CONFIRM POPUP
 
-const handlerCardDelete = () => {
-  console.log(123);
+const handlerCardDelete = (card) => {
+  card.delete();
 };
 
 const confirmPopup = new PopupWithButton(

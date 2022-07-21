@@ -4,7 +4,8 @@ class Card {
     userId,
     cardSelector,
     handleCardClick,
-    handleCardDelete
+    handleCardDelete,
+    openConfirmPopupHandler
   ) {
     this._templateClass = cardSelector.templateClass;
     this._imageClass = cardSelector.imageClass;
@@ -23,6 +24,7 @@ class Card {
     this._elementClass = cardSelector.elementClass;
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
+    this._openConfirmPopupHandler = openConfirmPopupHandler;
   }
 
   create() {
@@ -60,9 +62,16 @@ class Card {
     this._elementLikeCounter.textContent = this._likes.length;
   }
 
-  _delete(evt) {
-    this._handleCardDelete();
-    //evt.target.closest(this._elementClass).remove();
+  delete() {
+    this._handleCardDelete(this);
+  }
+
+  deleteCard() {
+    this._element.remove();
+  }
+
+  _openConfirmPopup() {
+    this._openConfirmPopupHandler(this);
   }
 
   _like(evt) {
@@ -75,7 +84,8 @@ class Card {
     if (this._isOwner) {
       this._deleteButton.classList.add(this._deleteActiveClass);
       this._deleteButton.addEventListener("click", (evt) => {
-        this._delete(evt);
+        this._element = evt.target.closest(this._elementClass);
+        this._openConfirmPopup();
       });
     }
     elementLikeButton.addEventListener("click", (evt) => {
@@ -84,6 +94,10 @@ class Card {
     elementImage.addEventListener("click", () => {
       this._handleCardClick(this._name, this._link);
     });
+  }
+
+  getId() {
+    return this._id;
   }
 }
 
