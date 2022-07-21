@@ -10,6 +10,7 @@ import {
   newPlaceFormName,
   profileFormName,
   profileConfiguration,
+  confirmPopupSelector,
 } from "./constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
@@ -19,6 +20,7 @@ import "../pages/index.css";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithButton } from "../components/PopupWithButton.js";
 
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
 const openPopupAdd = document.querySelector(".profile__info-add-button");
@@ -50,7 +52,7 @@ const handleCardClick = (name, link) => {
 };
 
 function createCard(item) {
-  const card = new Card(item, 1, cardSelector, handleCardClick);
+  const card = new Card(item, user.getUserId(), cardSelector, handleCardClick);
   const element = card.create();
   return element;
 }
@@ -95,17 +97,13 @@ openPopupAdd.addEventListener("click", handleNewCardPopupOpen);
 //USER INFO
 const user = new UserInfo(profileConfiguration);
 api.getUserInfo().then((data) => {
-  user.setUserInfo({ title: data.name, job: data.about, avatar: data.avatar });
+  user.setUserInfo(data);
 });
 
 //PROFILE POPUP
 function handleProfileformSubmit(data) {
   api.editProfile(data).then((data) => {
-    user.setUserInfo({
-      title: data.name,
-      job: data.about,
-      avatar: data.avatar,
-    });
+    user.setUserInfo(data);
   });
 }
 
@@ -125,3 +123,17 @@ const handleProfilePopupOpen = () => {
 };
 
 openPopupBtn.addEventListener("click", handleProfilePopupOpen);
+
+//CONFIRM POPUP
+
+const handlerCardDelete = () => {
+  console.log(123);
+};
+
+const confirmPopup = new PopupWithButton(
+  confirmPopupSelector,
+  popupConfiguration,
+  formConfiguration.submitBtnSelector,
+  handlerCardDelete
+);
+confirmPopup.setEventListeners();

@@ -9,6 +9,7 @@ class Card {
     this._imageClass = cardSelector.imageClass;
     this._titleClass = cardSelector.titleClass;
     this._deleteClass = cardSelector.deleteClass;
+    this._deleteActiveClass = cardSelector.deleteActiveClass;
     this._likeClass = cardSelector.likeClass;
     this._likeActiveClass = cardSelector.likeActiveClass;
     this._likeCounter = cardSelector.likeCounter;
@@ -36,7 +37,6 @@ class Card {
     const elementImage = element.querySelector(this._imageClass);
     this._elementLikeButton = element.querySelector(this._likeClass);
     this._elementLikeCounter = element.querySelector(this._likeCounter);
-    console.log(this._likeCounter);
     this._deleteButton = element.querySelector(this._deleteClass);
     elementImage.src = this._link;
     elementImage.alt = this._name;
@@ -68,10 +68,11 @@ class Card {
 
   _setEventListeners(element) {
     const elementImage = element.querySelector(this._imageClass);
-    const elementDeleteButton = element.querySelector(this._deleteClass);
     const elementLikeButton = element.querySelector(this._likeClass);
     if (this._isOwner) {
-      elementDeleteButton.addEventListener("click", (evt) => {
+      this._deleteButton.classList.add(this._deleteActiveClass);
+      console.log(this._deleteActiveClass);
+      this._deleteButton.addEventListener("click", (evt) => {
         this._delete(evt);
       });
     }

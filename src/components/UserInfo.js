@@ -15,8 +15,8 @@ export class UserInfo {
   }
 
   setUserInfo(data) {
-    this._profile.title = data.title || "";
-    this._profile.job = data.job || "";
+    this._profile.title = data.name || "";
+    this._profile.job = data.about || "";
     this._profile.avatar = data.avatar || "";
     this._profile._id = data._id || "";
     this._renderProfile();

@@ -20,6 +20,7 @@
 @import url(../blocks/gallery/__element-like/_active/gallery__element-like_active.css);
 @import url(../blocks/gallery/__element-description/gallery__element-description.css);
 @import url(../blocks/gallery/__element-delete/gallery__element-delete.css);
+@import url(../blocks/gallery/__element-delete/_displayed/gallery__element-delete_displayed.css);
 @import url(../blocks/gallery/element-like-container/gallery__element-like-conntainer.css);
 @import url(../blocks/gallery/element-like-counter/gallery__element-like-counter.css);
 @import url(../blocks/footer/footer.css);

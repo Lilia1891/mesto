@@ -16,11 +16,12 @@ export const cardSelector = {
   likeCounter: ".gallery__element-like-counter",
   likeActiveClass: "gallery__element-like_active",
   elementClass: ".gallery__element",
+  deleteActiveClass: "gallery__element-delete_displayed",
 };
 
 export const formConfiguration = {
   inputSelector: ".popup__input",
-  submitBtnSelector: "popup__submit-button",
+  submitBtnSelector: ".popup__submit-button",
   formSelector: ".popup__form",
 };
 
@@ -34,6 +35,7 @@ export const profilePopupSelector = ".popup_profile";
 export const newPlacePopupSelector = ".popup_add-card";
 export const imagePopupSelector = ".popup_view-image";
 export const newPlaceFormName = "popup__add-form";
+export const confirmPopupSelector = ".popup_confirm";
 export const profileFormName = "form";
 
 export const profileConfiguration = {
