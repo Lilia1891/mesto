@@ -33,8 +33,10 @@ export const popupConfiguration = {
 export const cardsContainerSelector = ".gallery__elements";
 export const profilePopupSelector = ".popup_profile";
 export const newPlacePopupSelector = ".popup_add-card";
+export const changeAvatarPopupSelector = ".popup_avatar";
 export const imagePopupSelector = ".popup_view-image";
 export const newPlaceFormName = "popup__add-form";
+export const avatarFormName = "avatar-form";
 export const confirmPopupSelector = ".popup_confirm";
 export const profileFormName = "form";
 

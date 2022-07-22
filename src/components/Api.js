@@ -105,5 +105,25 @@ export class Api {
         console.log(err);
       });
   }
+
+  changeAvatar(item) {
+    return fetch(this.baseUrl + "/users/me/avatar", {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: item.avatar,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   // другие методы работы с API
 }

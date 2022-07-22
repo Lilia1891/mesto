@@ -6,8 +6,10 @@ import {
   cardsContainerSelector,
   profilePopupSelector,
   newPlacePopupSelector,
+  changeAvatarPopupSelector,
   imagePopupSelector,
   newPlaceFormName,
+  avatarFormName,
   profileFormName,
   profileConfiguration,
   confirmPopupSelector,
@@ -24,6 +26,7 @@ import { PopupWithButton } from "../components/PopupWithButton.js";
 
 const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
 const openPopupAdd = document.querySelector(".profile__info-add-button");
+const openPopupAvatar = document.querySelector(".profile__avatar-change");
 
 //API
 
@@ -158,4 +161,29 @@ const confirmPopup = new PopupWithButton(
   handlerCardDelete
 );
 confirmPopup.setEventListeners();
-//confirmPopup.open();
+
+// CHANGE AVATAR POPUP
+console.log(formValidators);
+const handleAvatarSubmit = (item) => {
+  api.changeAvatar(item).then((data) => {
+    user.setUserInfo(data);
+  });
+};
+
+const changeAvatarPopup = new PopupWithForm(
+  changeAvatarPopupSelector,
+  avatarFormName,
+  popupConfiguration,
+  formConfiguration,
+  handleAvatarSubmit,
+
+  formValidators[avatarFormName].cleanUpForm,
+  user.getUserInfo
+);
+changeAvatarPopup.setEventListeners();
+
+const handleAvatarPopupOpen = () => {
+  changeAvatarPopup.open();
+};
+
+openPopupAvatar.addEventListener("click", handleAvatarPopupOpen);
