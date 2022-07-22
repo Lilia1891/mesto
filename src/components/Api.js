@@ -89,5 +89,21 @@ export class Api {
         console.log(err);
       });
   }
+
+  toggleLike(cardId, isLiked) {
+    return fetch(this.baseUrl + "/cards/" + cardId + "/likes", {
+      method: isLiked ? "DELETE" : "PUT",
+      headers: this.headers,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   // другие методы работы с API
 }

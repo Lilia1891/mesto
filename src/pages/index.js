@@ -50,14 +50,18 @@ popupView.setEventListeners();
 const handleCardClick = (name, link) => {
   popupView.open(name, link);
 };
-const handleCardDelete = (card) => {
+const handleCardDelete = (card, deleteCallback) => {
   api.deleteCard(card.getId()).then(() => {
-    card.deleteCard();
+    deleteCallback();
   });
 };
 
 const openConfirmPopupHandler = (card) => {
   confirmPopup.open(card);
+};
+
+const handleCardLike = (cardId, isLiked, setLikesCallback) => {
+  api.toggleLike(cardId, isLiked).then(({ likes }) => setLikesCallback(likes));
 };
 
 function createCard(item) {
@@ -67,7 +71,8 @@ function createCard(item) {
     cardSelector,
     handleCardClick,
     handleCardDelete,
-    openConfirmPopupHandler
+    openConfirmPopupHandler,
+    handleCardLike
   );
   const element = card.create();
   return element;
