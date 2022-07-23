@@ -91,19 +91,12 @@ function createCard(item) {
   return element;
 }
 
-const cardsContainer = new Section(
-  {
-    items: [],
-    renderer: createCard,
-  },
-  cardsContainerSelector
-);
+const cardsContainer = new Section(createCard, cardsContainerSelector);
 
 api
   .getInitialCards()
   .then((data) => {
-    cardsContainer.setItems(data.reverse());
-    cardsContainer.renderAll();
+    cardsContainer.renderAll(data.reverse());
   })
   .catch((err) => {
     console.log(err);

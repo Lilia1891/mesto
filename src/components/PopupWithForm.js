@@ -18,7 +18,9 @@ export class PopupWithForm extends Popup {
     this._activeCaption = activeCaption;
     this._getterCallBack = getterCallBack;
     this._formSelector = formSelector;
-    this._formElement = document.forms[this._formName];
+    this._formElement = this._popup.querySelector(
+      "form[name=" + this._formName + "]"
+    );
     this._inputs = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );

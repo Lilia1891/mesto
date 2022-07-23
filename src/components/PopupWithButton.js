@@ -4,7 +4,6 @@ export class PopupWithButton extends Popup {
   constructor(popupSelector, popupConfig, submitBtnSelector, submitCallBack) {
     super(popupSelector, popupConfig);
     this._submitCallBack = submitCallBack;
-    this._popup = document.querySelector(popupSelector);
     this._submitBtnElement = this._popup.querySelector(submitBtnSelector);
   }
 
