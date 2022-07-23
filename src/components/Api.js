@@ -4,16 +4,18 @@ export class Api {
     this.headers = options.headers;
   }
 
+  _getResponseData(res) {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+  }
+
   getUserInfo() {
     return fetch(this.baseUrl + "/users/me", {
       headers: this.headers,
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._getResponseData)
       .catch((err) => {
         console.log(err);
       });
@@ -23,12 +25,7 @@ export class Api {
     return fetch(this.baseUrl + "/cards", {
       headers: this.headers,
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._getResponseData)
       .catch((err) => {
         console.log(err);
       });
@@ -43,12 +40,7 @@ export class Api {
         about: data.job,
       }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._getResponseData)
       .catch((err) => {
         console.log(err);
       });
@@ -63,12 +55,7 @@ export class Api {
         link: item.link,
       }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._getResponseData)
       .catch((err) => {
         console.log(err);
       });
@@ -79,12 +66,7 @@ export class Api {
       method: "DELETE",
       headers: this.headers,
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._getResponseData)
       .catch((err) => {
         console.log(err);
       });
@@ -95,12 +77,7 @@ export class Api {
       method: isLiked ? "DELETE" : "PUT",
       headers: this.headers,
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._getResponseData)
       .catch((err) => {
         console.log(err);
       });
@@ -114,12 +91,7 @@ export class Api {
         avatar: item.avatar,
       }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._getResponseData)
       .catch((err) => {
         console.log(err);
       });
