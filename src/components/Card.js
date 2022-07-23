@@ -30,25 +30,23 @@ class Card {
   }
 
   create() {
-    const element = this._createElement();
-    this._setEventListeners(element);
+    this._createElement();
+    this._setEventListeners();
     this._renderLikes();
-    return element;
+    return this._element;
   }
 
   _createElement() {
     const elementTemplate = document.querySelector(this._templateClass).content;
-    const element = elementTemplate.cloneNode(true);
-    const elementPlaceName = element.querySelector(this._titleClass);
-    const elementImage = element.querySelector(this._imageClass);
-    this._elementLikeButton = element.querySelector(this._likeClass);
-    this._elementLikeCounter = element.querySelector(this._likeCounter);
-    this._deleteButton = element.querySelector(this._deleteClass);
+    this._element = elementTemplate.cloneNode(true);
+    const elementPlaceName = this._element.querySelector(this._titleClass);
+    const elementImage = this._element.querySelector(this._imageClass);
+    this._elementLikeButton = this._element.querySelector(this._likeClass);
+    this._elementLikeCounter = this._element.querySelector(this._likeCounter);
+    this._deleteButton = this._element.querySelector(this._deleteClass);
     elementImage.src = this._link;
     elementImage.alt = this._name;
     elementPlaceName.textContent = this._name;
-
-    return element;
   }
 
   _isLiked() {
@@ -83,9 +81,9 @@ class Card {
     });
   }
 
-  _setEventListeners(element) {
-    const elementImage = element.querySelector(this._imageClass);
-    const elementLikeButton = element.querySelector(this._likeClass);
+  _setEventListeners() {
+    const elementImage = this._element.querySelector(this._imageClass);
+    const elementLikeButton = this._element.querySelector(this._likeClass);
     if (this._isOwner) {
       this._deleteButton.classList.add(this._deleteActiveClass);
       this._deleteButton.addEventListener("click", (evt) => {
