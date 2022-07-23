@@ -14,21 +14,13 @@ export class Api {
   getUserInfo() {
     return fetch(this.baseUrl + "/users/me", {
       headers: this.headers,
-    })
-      .then(this._getResponseData)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponseData);
   }
 
   getInitialCards() {
     return fetch(this.baseUrl + "/cards", {
       headers: this.headers,
-    })
-      .then(this._getResponseData)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponseData);
   }
 
   editProfile(data) {
@@ -39,11 +31,7 @@ export class Api {
         name: data.title,
         about: data.job,
       }),
-    })
-      .then(this._getResponseData)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponseData);
   }
 
   addNewCard(item) {
@@ -54,33 +42,21 @@ export class Api {
         name: item.place,
         link: item.link,
       }),
-    })
-      .then(this._getResponseData)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponseData);
   }
 
   deleteCard(cardId) {
     return fetch(this.baseUrl + "/cards/" + cardId, {
       method: "DELETE",
       headers: this.headers,
-    })
-      .then(this._getResponseData)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponseData);
   }
 
   toggleLike(cardId, isLiked) {
     return fetch(this.baseUrl + "/cards/" + cardId + "/likes", {
       method: isLiked ? "DELETE" : "PUT",
       headers: this.headers,
-    })
-      .then(this._getResponseData)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponseData);
   }
 
   changeAvatar(item) {
@@ -90,11 +66,7 @@ export class Api {
       body: JSON.stringify({
         avatar: item.avatar,
       }),
-    })
-      .then(this._getResponseData)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponseData);
   }
 
   // другие методы работы с API
