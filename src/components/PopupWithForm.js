@@ -5,7 +5,7 @@ export class PopupWithForm extends Popup {
     popupSelector,
     formName,
     popupConfig,
-    { inputSelector, submitBtnSelector, formSelector },
+    { inputSelector, submitBtnSelector, formSelector, activeCaption },
     submitCallBack,
     cleanupFormCallBack,
     getterCallBack = null
@@ -15,12 +15,17 @@ export class PopupWithForm extends Popup {
     this._formName = formName;
     this._inputSelector = inputSelector;
     this._submitBtnSelector = submitBtnSelector;
+    this._activeCaption = activeCaption;
     this._getterCallBack = getterCallBack;
     this._formSelector = formSelector;
     this._formElement = document.forms[this._formName];
     this._inputs = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
+    this._submitButton = this._formElement.querySelector(
+      this._submitBtnSelector
+    );
+    this._normalCaption = this._submitButton.textContent;
     this._cleanupFormCallBack = cleanupFormCallBack;
   }
 
@@ -42,8 +47,11 @@ export class PopupWithForm extends Popup {
 
   _handleSubmit = (evt) => {
     evt.preventDefault();
-    this._submitCallBack(this._getInputValues());
-    this.close();
+    this._submitCallBack(
+      this._getInputValues(),
+      () => this.close(),
+      (isSaving) => this.toggleButtonCapture(isSaving)
+    );
   };
 
   setEventListeners() {
@@ -64,5 +72,11 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this._formElement.reset();
+  }
+
+  toggleButtonCapture(isSaving) {
+    this._submitButton.textContent = isSaving
+      ? this._activeCaption
+      : this._normalCaption;
   }
 }

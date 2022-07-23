@@ -96,9 +96,12 @@ api.getInitialCards().then((data) => {
 
 // NEW CARD POPUP
 
-const handleCardSubmit = (item) => {
+const handleCardSubmit = (item, closeCallback, captionCallback) => {
+  captionCallback(true);
   api.addNewCard(item).then((data) => {
     cardsContainer.addItem(data);
+    closeCallback();
+    captionCallback(false);
   });
 };
 
@@ -125,9 +128,12 @@ api.getUserInfo().then((data) => {
 });
 
 //PROFILE POPUP
-function handleProfileformSubmit(data) {
+function handleProfileformSubmit(data, closeCallback, captionCallback) {
+  captionCallback(true);
   api.editProfile(data).then((data) => {
     user.setUserInfo(data);
+    closeCallback();
+    captionCallback(false);
   });
 }
 
@@ -163,10 +169,12 @@ const confirmPopup = new PopupWithButton(
 confirmPopup.setEventListeners();
 
 // CHANGE AVATAR POPUP
-console.log(formValidators);
-const handleAvatarSubmit = (item) => {
+const handleAvatarSubmit = (item, closeCallback, captionCallback) => {
+  captionCallback(true);
   api.changeAvatar(item).then((data) => {
     user.setUserInfo(data);
+    closeCallback();
+    captionCallback(false);
   });
 };
 

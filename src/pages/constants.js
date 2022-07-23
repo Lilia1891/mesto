@@ -23,6 +23,7 @@ export const formConfiguration = {
   inputSelector: ".popup__input",
   submitBtnSelector: ".popup__submit-button",
   formSelector: ".popup__form",
+  activeCaption: "Сохранение...",
 };
 
 export const popupConfiguration = {
