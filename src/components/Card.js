@@ -78,7 +78,6 @@ class Card {
 
   _like(evt) {
     this._handleCardLike(this._id, this._isLiked(), (data) => {
-      console.log(data);
       this._likes = data;
       this._renderLikes();
     });

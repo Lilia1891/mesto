@@ -54,9 +54,14 @@ const handleCardClick = (name, link) => {
   popupView.open(name, link);
 };
 const handleCardDelete = (card, deleteCallback) => {
-  api.deleteCard(card.getId()).then(() => {
-    deleteCallback();
-  });
+  api
+    .deleteCard(card.getId())
+    .then(() => {
+      deleteCallback();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const openConfirmPopupHandler = (card) => {
@@ -64,7 +69,12 @@ const openConfirmPopupHandler = (card) => {
 };
 
 const handleCardLike = (cardId, isLiked, setLikesCallback) => {
-  api.toggleLike(cardId, isLiked).then(({ likes }) => setLikesCallback(likes));
+  api
+    .toggleLike(cardId, isLiked)
+    .then(({ likes }) => setLikesCallback(likes))
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 function createCard(item) {
@@ -89,20 +99,30 @@ const cardsContainer = new Section(
   cardsContainerSelector
 );
 
-api.getInitialCards().then((data) => {
-  cardsContainer.setItems(data.reverse());
-  cardsContainer.renderAll();
-});
+api
+  .getInitialCards()
+  .then((data) => {
+    cardsContainer.setItems(data.reverse());
+    cardsContainer.renderAll();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // NEW CARD POPUP
 
 const handleCardSubmit = (item, closeCallback, captionCallback) => {
   captionCallback(true);
-  api.addNewCard(item).then((data) => {
-    cardsContainer.addItem(data);
-    closeCallback();
-    captionCallback(false);
-  });
+  api
+    .addNewCard(item)
+    .then((data) => {
+      cardsContainer.addItem(data);
+      closeCallback();
+      captionCallback(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const newCardPopup = new PopupWithForm(
@@ -130,11 +150,16 @@ api.getUserInfo().then((data) => {
 //PROFILE POPUP
 function handleProfileformSubmit(data, closeCallback, captionCallback) {
   captionCallback(true);
-  api.editProfile(data).then((data) => {
-    user.setUserInfo(data);
-    closeCallback();
-    captionCallback(false);
-  });
+  api
+    .editProfile(data)
+    .then((data) => {
+      user.setUserInfo(data);
+      closeCallback();
+      captionCallback(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 const profilePopup = new PopupWithForm(
@@ -171,11 +196,16 @@ confirmPopup.setEventListeners();
 // CHANGE AVATAR POPUP
 const handleAvatarSubmit = (item, closeCallback, captionCallback) => {
   captionCallback(true);
-  api.changeAvatar(item).then((data) => {
-    user.setUserInfo(data);
-    closeCallback();
-    captionCallback(false);
-  });
+  api
+    .changeAvatar(item)
+    .then((data) => {
+      user.setUserInfo(data);
+      closeCallback();
+      captionCallback(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const changeAvatarPopup = new PopupWithForm(
