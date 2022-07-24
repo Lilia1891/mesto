@@ -24,10 +24,6 @@ export class UserInfo {
     };
   };
 
-  getUserAvatar() {
-    return this._avatarElement.src;
-  }
-
   getUserId() {
     return this._profile_id;
   }

@@ -210,9 +210,7 @@ const changeAvatarPopup = new PopupWithForm(
   popupConfiguration,
   formConfiguration,
   handleAvatarSubmit,
-
-  formValidators[avatarFormName].cleanUpForm,
-  user.getUserInfo
+  formValidators[avatarFormName].cleanUpForm
 );
 changeAvatarPopup.setEventListeners();
 
