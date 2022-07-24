@@ -93,10 +93,13 @@ function createCard(item) {
 
 const cardsContainer = new Section(createCard, cardsContainerSelector);
 
-api
-  .getInitialCards()
+//USER INFO
+const user = new UserInfo(profileConfiguration);
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then((data) => {
-    cardsContainer.renderAll(data.reverse());
+    user.setUserInfo(data[0]);
+    cardsContainer.renderAll(data[1].reverse());
   })
   .catch((err) => {
     console.log(err);
@@ -135,12 +138,6 @@ const handleNewCardPopupOpen = () => {
 };
 
 popupOpenAddBtn.addEventListener("click", handleNewCardPopupOpen);
-
-//USER INFO
-const user = new UserInfo(profileConfiguration);
-api.getUserInfo().then((data) => {
-  user.setUserInfo(data);
-});
 
 //PROFILE POPUP
 function handleProfileformSubmit(data, closeCallback, captionCallback) {
