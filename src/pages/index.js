@@ -24,9 +24,9 @@ import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithButton } from "../components/PopupWithButton.js";
 
-const openPopupBtn = document.querySelector(".profile__avatar-edit-button");
-const openPopupAdd = document.querySelector(".profile__info-add-button");
-const openPopupAvatar = document.querySelector(".profile__avatar-change");
+const popupOpenBtn = document.querySelector(".profile__avatar-edit-button");
+const popupOpenAddBtn = document.querySelector(".profile__info-add-button");
+const popupOpenAvatarBtn = document.querySelector(".profile__avatar-change");
 
 //API
 
@@ -134,7 +134,7 @@ const handleNewCardPopupOpen = () => {
   newCardPopup.open();
 };
 
-openPopupAdd.addEventListener("click", handleNewCardPopupOpen);
+popupOpenAddBtn.addEventListener("click", handleNewCardPopupOpen);
 
 //USER INFO
 const user = new UserInfo(profileConfiguration);
@@ -174,7 +174,7 @@ const handleProfilePopupOpen = () => {
   profilePopup.open();
 };
 
-openPopupBtn.addEventListener("click", handleProfilePopupOpen);
+popupOpenBtn.addEventListener("click", handleProfilePopupOpen);
 
 //CONFIRM POPUP
 
@@ -223,4 +223,4 @@ const handleAvatarPopupOpen = () => {
   changeAvatarPopup.open();
 };
 
-openPopupAvatar.addEventListener("click", handleAvatarPopupOpen);
+popupOpenAvatarBtn.addEventListener("click", handleAvatarPopupOpen);
