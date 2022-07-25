@@ -40,12 +40,12 @@ class Card {
     const elementTemplate = document.querySelector(this._templateClass).content;
     this._element = elementTemplate.cloneNode(true);
     const elementPlaceName = this._element.querySelector(this._titleClass);
-    const elementImage = this._element.querySelector(this._imageClass);
+    this._elementImage = this._element.querySelector(this._imageClass);
     this._elementLikeButton = this._element.querySelector(this._likeClass);
     this._elementLikeCounter = this._element.querySelector(this._likeCounter);
     this._deleteButton = this._element.querySelector(this._deleteClass);
-    elementImage.src = this._link;
-    elementImage.alt = this._name;
+    this._elementImage.src = this._link;
+    this._elementImage.alt = this._name;
     elementPlaceName.textContent = this._name;
   }
 
@@ -82,8 +82,6 @@ class Card {
   }
 
   _setEventListeners() {
-    const elementImage = this._element.querySelector(this._imageClass);
-    const elementLikeButton = this._element.querySelector(this._likeClass);
     if (this._isOwner) {
       this._deleteButton.classList.add(this._deleteActiveClass);
       this._deleteButton.addEventListener("click", (evt) => {
@@ -91,10 +89,10 @@ class Card {
         this._openConfirmPopup();
       });
     }
-    elementLikeButton.addEventListener("click", (evt) => {
+    this._elementLikeButton.addEventListener("click", (evt) => {
       this._like(evt);
     });
-    elementImage.addEventListener("click", () => {
+    this._elementImage.addEventListener("click", () => {
       this._handleCardClick(this._name, this._link);
     });
   }
