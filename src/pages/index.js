@@ -113,12 +113,12 @@ const handleCardSubmit = (item, closeCallback, captionCallback) => {
     .addNewCard(item)
     .then((data) => {
       cardsContainer.addItem(data);
+      closeCallback();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closeCallback();
       captionCallback(false);
     });
 };
@@ -146,12 +146,12 @@ function handleProfileformSubmit(data, closeCallback, captionCallback) {
     .editProfile(data)
     .then((data) => {
       user.setUserInfo(data);
+      closeCallback();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closeCallback();
       captionCallback(false);
     });
 }
@@ -194,12 +194,12 @@ const handleAvatarSubmit = (item, closeCallback, captionCallback) => {
     .changeAvatar(item)
     .then((data) => {
       user.setUserInfo(data);
+      closeCallback();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      closeCallback();
       captionCallback(false);
     });
 };
